@@ -1,0 +1,46 @@
+# @reference:
+#   https://docs.docker.com/install/linux/docker-ce/ubuntu/
+#   https://docs.docker.com/compose/install/
+#   https://docs.docker.com/compose/compose-file/
+# 
+#   chmod 755 ./conf
+#   chmod 644 ./conf/mysqld.cnf
+#
+version: "3"
+services:
+  mysql:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    container_name: mysql
+    hostname: mysql
+    image: icmdb/mysql
+    environment:
+      - MYSQL_IMAGE_URL=https://hub.docker.com/_/mysql
+      - MYSQL_ROOT_PASSWORD=my-root-password
+      - MYSQL_USER=mysqld-exporter
+      - MYSQL_PASSWORD=mysqld-exporter-password
+    ports:
+      - 3306:3306
+    volumes:
+      - ./init/init.sql:/docker-entrypoint-initdb.d/:ro
+      - ./conf/my.cnf:/root/.my.cnf:ro
+      - ./conf/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf
+      - ./mysqldata/data:/var/lib/mysql:rw
+      - ./mysqldata/files:/var/lib/mysql-files:rw
+    command: ["mysqld", "--max-allowed-packet=512M", "--character-set-server=utf8", "--collation-server=utf8_unicode_ci", "--innodb_buffer_pool_size=1G"]
+    restart: always
+
+  mysqld-exporter:
+    container_name: mysqld-exporter
+    hostname: mysqld-exporter
+    image: prom/mysqld-exporter
+    expose:
+      - 9104
+    environment:
+      - MYSQLD_EXPORTER_GITHUB=https://github.com/prometheus/mysqld_exporter
+      - MYSQLD_EXPORTER_IMAGE_URL=https://hub.docker.com/r/prom/mysqld-exporter
+      - 'DATA_SOURCE_NAME=mysqld-exporter:mysqld-exporter-password@(mysql:3306)/performance_schema'
+    links:
+      - mysql:mysql
+    restart: always
