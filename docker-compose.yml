@@ -14,12 +14,13 @@ services:
       dockerfile: ./Dockerfile
     container_name: mysql
     hostname: mysql
-    image: icmdb/mysql
+    image: icmdb/mysql:latest
     environment:
-      - MYSQL_IMAGE_URL=https://hub.docker.com/_/mysql
+      - MYSQL_IMAGE_URL=https://hub.docker.com/r/icmdb/mysql
       - MYSQL_ROOT_PASSWORD=my-root-password
       - MYSQL_USER=mysqld-exporter
       - MYSQL_PASSWORD=mysqld-exporter-password
+      - MYSQL_DATABASE=my_database
     ports:
       - 3306:3306
     volumes:
