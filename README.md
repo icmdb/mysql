@@ -26,3 +26,4 @@ docker-compose up -d
 * [x] Configfile
 * [x] Initialize script
 * [x] mysql-exportor
+* [ ] Backup scripts

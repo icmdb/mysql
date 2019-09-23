@@ -35,8 +35,8 @@ services:
     container_name: mysqld-exporter
     hostname: mysqld-exporter
     image: prom/mysqld-exporter
-    expose:
-      - 9104
+    ports:
+        - 9104:9104
     environment:
       - MYSQLD_EXPORTER_GITHUB=https://github.com/prometheus/mysqld_exporter
       - MYSQLD_EXPORTER_IMAGE_URL=https://hub.docker.com/r/prom/mysqld-exporter
