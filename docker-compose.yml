@@ -21,10 +21,11 @@ services:
       - MYSQL_USER=mysqld-exporter
       - MYSQL_PASSWORD=mysqld-exporter-password
       - MYSQL_DATABASE=my_database
+      - MYSQL_CREATE_DBS=tt1,tt2,tt3
     ports:
       - 3306:3306
     volumes:
-      - ./init/init.sql:/docker-entrypoint-initdb.d/:ro
+     #- ./init/:/docker-entrypoint-initdb.d/:ro
       - ./conf/my.cnf:/root/.my.cnf:ro
       - ./conf/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf
       - ./mysqldata/data:/var/lib/mysql:rw
