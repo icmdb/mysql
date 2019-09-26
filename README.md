@@ -27,3 +27,5 @@ docker-compose up -d
 * [x] Initialize script
 * [x] mysql-exportor
 * [ ] Backup scripts
+* [ ] Auto Create Databases
+* [ ] Auto Create Users

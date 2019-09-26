@@ -67,4 +67,3 @@ tags
 # End of https://www.gitignore.io/api/vim,linux,macos
 
 mysqldata/
-init/9-init.sql

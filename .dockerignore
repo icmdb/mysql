@@ -5,4 +5,3 @@ LICENSE
 README.md
 docker-compose.yml
 mysqldata/
-init/9-init.sql

@@ -2,6 +2,7 @@
 #   https://docs.docker.com/install/linux/docker-ce/ubuntu/
 #   https://docs.docker.com/compose/install/
 #   https://docs.docker.com/compose/compose-file/
+#   https://hub.docker.com/r/phpmyadmin/phpmyadmin
 # 
 #   chmod 755 ./conf
 #   chmod 644 ./conf/mysqld.cnf
@@ -45,4 +46,25 @@ services:
       - 'DATA_SOURCE_NAME=mysqld-exporter:mysqld-exporter-password@(mysql:3306)/performance_schema'
     links:
       - mysql:mysql
+    restart: always
+
+  mysql-pma:
+    container_name: phpmyadmin
+    hostname: phpmyadmin
+    image: phpmyadmin/phpmyadmin
+    environment:
+     - PMA_ARBITRARY=10
+     - PMA_HOST=pma.icmdb.vip
+     - PMA_VERBOSE=mysql
+     - PMA_PORT=3306
+     - MYSQL_ROOT_PASSWORD=my-root-password
+     - MYSQL_USER=phpmyadmin
+     - MYSQL_PASSWORD=phpmyadmin-password
+    #volumes:
+    # - ./phpmyadmin/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php
+    ports:
+     - 8080:80
+    links:
+     - mysql:mysql
+     - mysql:pma.icmdb.vip
     restart: always
