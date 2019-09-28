@@ -4,8 +4,10 @@ Mysql image with customized config file (moved from icmdb/applications/mysql).
 
 ## Reference
 
-* [mysql dockerhub](https://hub.docker.com/_/mysql)
-* [Configuring the Server - mysqldocs](https://dev.mysql.com/doc/refman/5.7/en/server-configuration.html)
+* [Get Docker Engine - Community for Ubuntu - Docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
+* [Install Docker Compose - Docker](https://docs.docker.com/compose/install/)
+* [mysql - DockerHub](https://hub.docker.com/_/mysql)
+* [Configuring the Server - MySQL Docs](https://dev.mysql.com/doc/refman/5.7/en/server-configuration.html)
 
 
 ## Quick Start
