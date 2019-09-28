@@ -24,17 +24,19 @@ docker-compose up -d
 
 ## Todo List
 
-* [x] Image Autobuild (DockerHub)
-* [x] MySQL Configfile (conf/mysqld.cnf)
-* [x] MySQL Initialize Script
+* [x] MySQL Configfile for customized
+* [x] MySQL Initialize Scripts for autocreate DBs/Users
     * [x] Auto Create Databases
     * [ ] Auto Create Users
-* [x] MySQL Management (phpmyadmin)
-* [ ] MySQL Monit
+* [x] MySQL Dockerfile for autobuild (DockerHub)
+* [x] MySQL docker-compose file for on key start 
+* [ ] MySQL deployment yaml for kubernetes 
+* [x] MySQL Management for easy to use (phpmyadmin)
+* [ ] MySQL Monitoring for performance/improvement/alert
     * [x] mysql-exportor
     * [ ] Prometheus
     * [ ] Grafana
-* [ ] MySQL Backup
+* [ ] MySQL Backup for disaster recovery
     * [ ] Backup Scripts
     * [ ] Backup Container
-* [ ] MySQL HA
+* [ ] MySQL HA for production
