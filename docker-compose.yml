@@ -31,6 +31,7 @@ services:
       - ./conf/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf
       - ./mysqldata/data:/var/lib/mysql:rw
       - ./mysqldata/files:/var/lib/mysql-files:rw
+      - ./mysqldata/backup:/backup:rw
     command: ["mysqld", "--max-allowed-packet=512M", "--character-set-server=utf8", "--collation-server=utf8_unicode_ci", "--innodb_buffer_pool_size=1G"]
     restart: always
 
@@ -48,7 +49,7 @@ services:
       - mysql:mysql
     restart: always
 
-  mysql-pma:
+  mysqladmin:
     container_name: phpmyadmin
     hostname: phpmyadmin
     image: phpmyadmin/phpmyadmin

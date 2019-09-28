@@ -34,7 +34,8 @@ secure_file_priv    = /var/lib/mysql-files
 explicit_defaults_for_timestamp
 
 lower_case_table_names  = 1
-collation-server        = utf8_unicode_ci
+#transaction_isolation   = READ-COMMITTED   # for confluence
+collation-server        = utf8_unicode_ci   # for confluence as utf8_bin
 character-set-server    = utf8
 init_connect            = 'SET collation_connection = utf8_unicode_ci'
 init_connect            = 'SET NAMES utf8'
