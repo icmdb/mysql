@@ -5,5 +5,7 @@ LICENSE
 README.md
 docker-compose.yml
 mysqldata/
+prometheus/
+grafana/
 k8s/
 helm/

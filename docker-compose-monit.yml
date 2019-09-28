@@ -40,16 +40,14 @@ services:
     command: ["mysqld", "--max-allowed-packet=512M", "--character-set-server=utf8", "--collation-server=utf8_unicode_ci", "--innodb_buffer_pool_size=1G"]
     restart: always
 
-  mysql-exporter:
+  mysqld-exporter:
     networks:
      - mysqlnet
-    container_name: mysql-exporter
-    hostname: mysql-exporter
+    container_name: mysqld-exporter
+    hostname: mysqld-exporter
     image: prom/mysqld-exporter
-    expose:
-     - 9104
     ports:
-     - 9104:9104
+        - 9104:9104
     environment:
       - MYSQLD_EXPORTER_GITHUB=https://github.com/prometheus/mysqld_exporter
       - MYSQLD_EXPORTER_IMAGE_URL=https://hub.docker.com/r/prom/mysqld-exporter
@@ -79,55 +77,4 @@ services:
     links:
      - mysql:mysql
      - mysql:pma.icmdb.vip
-    restart: always
-
-  mysql-prometheus:
-    networks:
-     - mysqlnet
-    container_name: mysql-prometheus
-    hostname: mysql-prometheus
-    image: prom/prometheus
-    environment:
-     - PROM_ENV=
-    volumes:
-     - ./conf/prometheus.yml:/etc/prometheus/prometheus.yml
-     - ./prometheus/data/:/prometheus
-    command:
-     - '--config.file=/etc/prometheus/prometheus.yml'
-     - '--storage.tsdb.path=/prometheus'
-     - '--storage.tsdb.retention=30d'
-     - '--web.console.libraries=/usr/share/prometheus/console_libraries'
-     - '--web.console.templates=/usr/share/prometheus/consoles'
-    ports:
-     - 9090:9090
-    links:
-     - mysql-exporter:mysql-exporter
-    restart: always
-
-  mysql-grafana:
-    networks:
-     - mysqlnet
-    container_name: mysql-grafana
-    hostname: mysql-grafana
-    image: grafana/grafana
-    environment:
-     - GF_SERVER_ROOT_URL=http://loc.icmdb.vip:3000
-     - GF_SECURITY_ADMIN_PASSWORD=Passw0rd4Grafna
-     - GF_PATHS_CONFIG=/etc/grafana/grafana.ini
-     - GF_PATHS_DATA=/var/lib/grafana
-     - GF_PATHS_HOME=/usr/share/grafana
-     - GF_PATHS_PLUGINS=/var/lib/grafana/plugins
-     - GF_PATHS_PROVISIONING=/etc/grafana/provisioning
-     - GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-simple-json-datasource
-#     - GF_AWS_PROFILES=default
-#     - GF_AWS_default_ACCESS_KEY_ID=YOUR_ACCESS_KEY
-#     - GF_AWS_default_SECRET_ACCESS_KEY=YOUR_SECRET_KEY
-#     - GF_AWS_default_REGION=us-east-1
-    volumes:
-     - ./grafana/data:/var/lib/grafana
-     - ./grafana/plugin:/var/lib/grafana/plugins
-    ports:
-     - 3000:3000
-    links:
-     - mysql-prometheus:mysql-prometheus
     restart: always
