@@ -33,6 +33,12 @@ docker-compose pull
 docker-compose up -d
 ```
 
+## Environment
+
+> Details see: [docker-compose.yml](https://github.com/icmdb/mysql/blob/master/docker-compose.yml)
+
+* `MYSQL_CREATE_DBS=db1,db2,db3`
+
 ## Todo List
 
 * [x] MySQL Configfile for customized
@@ -51,3 +57,7 @@ docker-compose up -d
     * [ ] Backup Scripts
     * [ ] Backup Container
 * [ ] MySQL HA for production
+
+## Feedback
+
+* [issues - GitHub](https://github.com/icmdb/mysql/issues)
