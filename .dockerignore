@@ -9,3 +9,4 @@ prometheus/
 grafana/
 k8s/
 helm/
+images/

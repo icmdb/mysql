@@ -54,6 +54,10 @@ Then you can access:
 
 > Grafana may take 2 minutes to get ready for access!
 
+Recommanded dashboard for mysql: 7362, 7991, 9777
+
+![MySQL Demo](https://raw.githubusercontent.com/icmdb/yapi/master/images/mysql-demo.png)
+
 ## Environment
 
 Details see: [docker-compose.yml](https://github.com/icmdb/mysql/blob/master/docker-compose.yml)
