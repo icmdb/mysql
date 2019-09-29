@@ -77,6 +77,8 @@ Details see: [docker-compose.yml](https://github.com/icmdb/mysql/blob/master/doc
 * [ ] MySQL Backup for disaster recovery
     * [ ] Backup Scripts
     * [ ] Backup Container
+* [ ] MySQL Tools
+    * [ ] MySQL percona-toolkit
 * [ ] MySQL HA for production
 
 ## Feedback
