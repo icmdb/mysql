@@ -56,7 +56,7 @@ Then you can access:
 
 Recommanded dashboard for mysql: 7362, 7991, 9777
 
-![MySQL Demo](https://raw.githubusercontent.com/icmdb/yapi/master/images/mysql-demo.png)
+![MySQL Demo](https://github.com/icmdb/mysql/blob/master/images/mysql-demo.png)
 
 ## Environment
 
