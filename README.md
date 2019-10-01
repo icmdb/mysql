@@ -71,7 +71,7 @@ Details see: [docker-compose.yml](https://github.com/icmdb/mysql/blob/master/doc
 * [x] MySQL Configfile for customized
 * [x] MySQL Initialize Scripts for autocreate DBs/Users
     * [x] Auto Create Databases
-    * [ ] Auto Create Users
+    * [x] Auto Create Users
 * [x] MySQL Dockerfile for autobuild (DockerHub)
 * [x] MySQL docker-compose file for on key start 
 * [ ] MySQL deployment yaml for kubernetes 
@@ -80,9 +80,8 @@ Details see: [docker-compose.yml](https://github.com/icmdb/mysql/blob/master/doc
     * [x] mysql-exportor
     * [x] Prometheus
     * [x] Grafana
-* [ ] MySQL Backup for disaster recovery
-    * [ ] Backup Scripts
-    * [ ] Backup Container
+* [x] MySQL Backup for disaster recovery
+    * [x] Backup Scripts
 * [x] MySQL Tools
     * [x] MySQL percona-toolkit
 * [ ] MySQL HA for production
