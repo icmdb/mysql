@@ -52,6 +52,8 @@ Then you can access:
 |mysql-exportor|[http://127.0.0.1:9104/metrics](http://127.0.0.1:9104/metrics) (mysqld-exporter/Passw0rd4MySQLdExporter)|
 |prometheus    |[http://127.0.0.1:9090](http://127.0.0.1:9090)|
 |grafana       |[http://127.0.0.1:3000](http://127.0.0.1:3000) (admin/Passw0rd4Grafana)|
+|percona toolkit|commandinline `pt-*`|
+|backup script  |`/mysql-backup.sh`|
 
 > Grafana may take 2 minutes to get ready for access!
 
