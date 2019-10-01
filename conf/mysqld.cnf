@@ -1,5 +1,7 @@
 # @reference:   
 #       https://dev.mysql.com/doc/refman/5.7/en/server-configuration.html
+#       https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html
+#       https://dev.mysql.com/doc/refman/5.7/en/log-destinations.html
 #       https://blog.csdn.net/q549244663/article/details/78205247
 # @path: 
 #       /etc/mysql/mysql.conf.d/mysqld.cnf
@@ -66,18 +68,20 @@ query_cache_limit   = 16M
 sql_mode            = STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
 optimizer_switch    = 'index_merge=on,index_merge_union=on,index_merge_sort_union=on,index_merge_intersection=on,engine_condition_pushdown=on,index_condition_pushdown=on,mrr=on,mrr_cost_based=on,block_nested_loop=on,batched_key_access=off,materialization=on,semijoin=on,loosescan=on,firstmatch=on,duplicateweedout=on,subquery_materialization_cost_based=on,use_index_extensions=on,condition_fanout_filter=on,derived_merge=off'
 
-log_output          = FILE
+log_output          = FILE  # Default: FILE, TABLE,FILE,NONE
 log_error           = /var/log/mysql/error.log
 
-# --------------------------------------- #
-# - Recommended for Develop Environment - #
-# --------------------------------------- #
-#general_log        = ON
-#general_log_file   = /var/log/mysql/mysql.log
-#slow_query_log      = ON
-#long_query_time     = 1
-#slow_query_log_file = /var/log/mysql/slow.log
-#log_queries_not_using_indexes   = ON
+# ------------------------------------------------- #
+# - Recommended for Develop & Testing Environment - #
+# ------------------------------------------------- #
+general_log         = ON
+general_log_file    = /var/log/mysql/general.log
+slow_query_log      = ON
+long_query_time     = 1
+slow_query_log_file = /var/log/mysql/slow.log
+log_queries_not_using_indexes   = ON
+log_slow_admin_statements       = ON
+min_examined_row_limit          = 1
 
 # ---------- #
 # - Import - #
@@ -103,7 +107,7 @@ innodb_write_io_threads         = 16
 innodb_read_io_threads          = 16
 innodb_io_capacity              = 3000      # 200-SAS|5000-SSD|1-5W-PCI-E
 innodb_flush_log_at_trx_commit  = 2         # 1every time|2 sys sync
-#innodb_temp_data_file_path     = btmp1:50M;ibtmp2:12M:autoextend:max:500MB
+#innodb_temp_data_file_path     = ibtmp1:50M;ibtmp2:12M:autoextend:max:500MB
 #innodb_log_buffer_size         = 16M
 #innodb_log_file_size           = 512M      # 25% of buffer pool size
 #innodb_flush_method            = O_DIRECT  # for redolog

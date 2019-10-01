@@ -23,6 +23,7 @@ Moved from icmdb/applications/mysql.
 * [Using MySQL in Grafana](https://grafana.com/docs/features/datasources/mysql/)
 * [1.4.1 Dumping Data in SQL Format with mysqldump - MySQL Docs](https://dev.mysql.com/doc/mysql-backup-excerpt/5.7/en/mysqldump-sql-format.html)
 * [MySQL HA/Scalability Guide](https://dev.mysql.com/doc/mysql-ha-scalability/en/)
+* [Percona Toolkit Documentation](https://www.percona.com/doc/percona-toolkit/3.0/index.html)
 
 
 ## Quick Start
@@ -47,8 +48,8 @@ Then you can access:
 
 |Name          |Url                                           |
 |--------------|----------------------------------------------|
-|phpmyadmin    |[http://127.0.0.1:8080](http://127.0.0.1:8080)|
-|mysql-exportor|[http://127.0.0.1:9104/metrics](http://127.0.0.1:9104/metrics)|
+|phpmyadmin    |[http://127.0.0.1:8080](http://127.0.0.1:8080) (root/Passw0rd4MySQLRoot)|
+|mysql-exportor|[http://127.0.0.1:9104/metrics](http://127.0.0.1:9104/metrics) (mysqld-exporter/Passw0rd4MySQLdExporter)|
 |prometheus    |[http://127.0.0.1:9090](http://127.0.0.1:9090)|
 |grafana       |[http://127.0.0.1:3000](http://127.0.0.1:3000) (admin/Passw0rd4Grafana)|
 
@@ -56,13 +57,14 @@ Then you can access:
 
 Recommanded dashboard for mysql: 7362, 7991, 9777
 
-![MySQL Demo](https://github.com/icmdb/mysql/blob/master/images/mysql-demo.png)
+![MySQL Demo](https://raw.githubusercontent.com/icmdb/mysql/master/images/mysql-demo.png)
 
 ## Environment
 
 Details see: [docker-compose.yml](https://github.com/icmdb/mysql/blob/master/docker-compose.yml)
 
 * `MYSQL_CREATE_DBS=db1,db2,db3`
+* `MYSQL_CREATE_USERS=user1:pass1:db1,user2:pass2:db2,user3:pass3:db3`
 
 ## Todo List
 
@@ -81,8 +83,8 @@ Details see: [docker-compose.yml](https://github.com/icmdb/mysql/blob/master/doc
 * [ ] MySQL Backup for disaster recovery
     * [ ] Backup Scripts
     * [ ] Backup Container
-* [ ] MySQL Tools
-    * [ ] MySQL percona-toolkit
+* [x] MySQL Tools
+    * [x] MySQL percona-toolkit
 * [ ] MySQL HA for production
 
 ## Feedback

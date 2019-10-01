@@ -23,11 +23,12 @@ services:
     image: icmdb/mysql:latest
     environment:
       - MYSQL_IMAGE_URL=https://hub.docker.com/r/icmdb/mysql
-      - MYSQL_ROOT_PASSWORD=my-root-password
+      - MYSQL_ROOT_PASSWORD=Passw0rd4MySQLRoot
       - MYSQL_USER=mysqld-exporter
-      - MYSQL_PASSWORD=mysqld-exporter-password
-      - MYSQL_DATABASE=my_database
+      - MYSQL_PASSWORD=Passw0rd4MySQLdExporter
+      - MYSQL_DATABASE=icmdb
       - MYSQL_CREATE_DBS=db1,db2,db3
+      - MYSQL_CREATE_USERS=user1:pass1:db1,user2:pass2:db2,user3:pass3:db3
     ports:
       - 3306:3306
     volumes:
@@ -53,9 +54,10 @@ services:
     environment:
       - MYSQLD_EXPORTER_GITHUB=https://github.com/prometheus/mysqld_exporter
       - MYSQLD_EXPORTER_IMAGE_URL=https://hub.docker.com/r/prom/mysqld-exporter
-      - 'DATA_SOURCE_NAME=mysqld-exporter:mysqld-exporter-password@(mysql:3306)/performance_schema'
+      - 'DATA_SOURCE_NAME=mysqld-exporter:Passw0rd4MySQLdExporter@(mysql:3306)/performance_schema'
     links:
       - mysql:mysql
+    command: ["--collect.engine_innodb_status", "--collect.info_schema.innodb_metrics", "--collect.info_schema.processlist"]
     restart: always
 
   mysql-admin:
@@ -112,7 +114,7 @@ services:
     image: grafana/grafana
     environment:
      - GF_SERVER_ROOT_URL=http://loc.icmdb.vip:3000
-     - GF_SECURITY_ADMIN_PASSWORD=Passw0rd4Grafna
+     - GF_SECURITY_ADMIN_PASSWORD=Passw0rd4Grafana
      - GF_PATHS_CONFIG=/etc/grafana/grafana.ini
      - GF_PATHS_DATA=/var/lib/grafana
      - GF_PATHS_HOME=/usr/share/grafana
