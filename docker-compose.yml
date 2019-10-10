@@ -37,6 +37,7 @@ services:
       - ./conf/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf
       - ./mysqldata/data:/var/lib/mysql:rw
       - ./mysqldata/files:/var/lib/mysql-files:rw
+      - ./mysqldata/logs:/var/log/mysql:rw
       - ./mysqldata/backup:/backup:rw
     command: ["mysqld", "--max-allowed-packet=512M", "--character-set-server=utf8", "--collation-server=utf8_unicode_ci", "--innodb_buffer_pool_size=1G"]
     restart: always
